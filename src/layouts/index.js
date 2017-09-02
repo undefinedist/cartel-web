@@ -4,6 +4,7 @@ import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import {Header} from 'sicario'
 import {Provider} from 'rebass'
+import logo from '../../static/logo.svg'
 
 const TemplateWrapper = ({
   children,
@@ -17,7 +18,11 @@ const TemplateWrapper = ({
         {name: 'keywords', content: 'sample, something'},
       ]}
     />
-    <Header bg={bg} btn={{...Header.defaultProps.btn, ...btn}} />
+    <Header
+      bg={bg}
+      btn={{...Header.defaultProps.btn, ...btn}}
+      logo={{...Header.defaultProps.logo, logoUrl: logo}}
+    />
     <div
       style={{
         margin: '0 auto',

@@ -8,10 +8,16 @@ module.exports = {
         btnColor: 'white',
         btnBg: '#ea9a4c',
       },
-      logo: {
-        logoUrl: 'http://via.placeholder.com/150x36',
-      },
     },
   },
-  plugins: ['gatsby-plugin-react-helmet', 'gatsby-plugin-styled-components'],
+  plugins: [
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-styled-components',
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography.js`,
+      },
+    },
+  ],
 }
