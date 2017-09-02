@@ -50,7 +50,7 @@ const theme = {
 }
 
 export const query = graphql`
-  query AboutQuery {
+  query HeaderQuery {
     site {
       siteMetadata {
         header {
