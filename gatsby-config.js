@@ -11,6 +11,9 @@ module.exports = {
       },
     },
     hero: {
+      backgroundImage: '',
+      contentLoc: 'left',
+      contentPx: [1, 3, 4, 4],
       title: {
         titleText: 'RUN.\nFLY.\nLOOK.\nFEEL.',
         titleSizes: ['7em'],

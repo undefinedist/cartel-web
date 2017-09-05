@@ -2,10 +2,11 @@ import React from 'react'
 import Link from 'gatsby-link'
 import Hero from 'sicario/Hero'
 import heroBg from '../../static/hero-bg.jpg'
+import {pickBy, identity} from 'lodash'
 
-const IndexPage = ({data: {site: {siteMetadata: {hero: {title, description}}}}}) => (
+const IndexPage = ({data: {site: {siteMetadata: {hero}}}}) => (
   <div>
-    <Hero title={title} description={description} contentLoc="left" backgroundImage={heroBg} />
+    <Hero {...hero} backgroundImage={heroBg} />
     <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
@@ -56,16 +57,19 @@ export const query = graphql`
     site {
       siteMetadata {
         hero {
+          backgroundImage
+          contentLoc
+          contentPx
           title {
-            titleSizes
             titleText
+            titleSizes
             titleColor
             titleBold
             titlePb
           }
           description {
-            descriptionSizes
             descriptionText
+            descriptionSizes
             descriptionColor
             descriptionBold
           }
