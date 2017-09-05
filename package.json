@@ -11,7 +11,7 @@
     "gatsby-plugin-typography": "^1.7.9",
     "lodash": "^4.17.4",
     "rebass": "^1.0.4",
-    "sicario": "^0.5.16",
+    "sicario": "^0.5.17",
     "styled-components": "^2.1.2"
   },
   "keywords": [
