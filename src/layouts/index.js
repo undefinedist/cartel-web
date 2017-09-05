@@ -6,10 +6,7 @@ import {Header} from 'sicario'
 import {Provider} from 'rebass'
 import logo from '../../static/logo.svg'
 
-const TemplateWrapper = ({
-  children,
-  data: {site: {siteMetadata: {header: {bg, btn}}}},
-}) => (
+const TemplateWrapper = ({children, data: {site: {siteMetadata: {header: {bg, btn}}}}}) => (
   <Provider theme={theme}>
     <Helmet
       title="Gatsby Default Starter"
@@ -27,7 +24,6 @@ const TemplateWrapper = ({
       style={{
         margin: '0 auto',
         maxWidth: '100%',
-        paddingTop: '64px',
       }}>
       {children()}
     </div>
@@ -61,6 +57,7 @@ export const query = graphql`
         header {
           bg
           btn {
+            btnFontSize
             btnText
             btnColor
             btnBg
