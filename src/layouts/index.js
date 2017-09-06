@@ -4,9 +4,9 @@ import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 import {Header} from 'sicario'
 import {Provider} from 'rebass'
-import logo from '../../static/logo.svg'
+import logoSrc from '../../static/logo.svg'
 
-const TemplateWrapper = ({children, data: {site: {siteMetadata: {header: {bg, btn}}}}}) => (
+const TemplateWrapper = ({children, data: {site: {siteMetadata: {header}}}}) => (
   <Provider theme={theme}>
     <Helmet
       title="Gatsby Default Starter"
@@ -15,15 +15,10 @@ const TemplateWrapper = ({children, data: {site: {siteMetadata: {header: {bg, bt
         {name: 'keywords', content: 'sample, something'},
       ]}
     />
-    <Header
-      bg={bg}
-      btn={{...Header.defaultProps.btn, ...btn}}
-      logo={{...Header.defaultProps.logo, logoUrl: logo}}
-    />
+    <Header {...header} logoSrc={logoSrc} />
     <div
       style={{
         margin: '0 auto',
-        maxWidth: '100%',
       }}>
       {children()}
     </div>
@@ -56,12 +51,7 @@ export const query = graphql`
       siteMetadata {
         header {
           bg
-          btn {
-            btnFontSize
-            btnText
-            btnColor
-            btnBg
-          }
+          btnText
         }
       }
     }
