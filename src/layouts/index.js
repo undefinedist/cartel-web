@@ -6,24 +6,32 @@ import {Header} from 'sicario'
 import {Provider} from 'rebass'
 import logoSrc from '../../static/logo.svg'
 
-const TemplateWrapper = ({children, data: {site: {siteMetadata: {header}}}}) => (
-  <Provider theme={theme}>
-    <Helmet
-      title="Gatsby Default Starter"
-      meta={[
-        {name: 'description', content: 'Sample'},
-        {name: 'keywords', content: 'sample, something'},
-      ]}
-    />
-    <Header {...header} logoSrc={logoSrc} />
-    <div
-      style={{
-        margin: '0 auto',
-      }}>
-      {children()}
-    </div>
-  </Provider>
-)
+const TemplateWrapper = ({children, data}) => {
+  const {theme, title, header} = data.site.siteMetadata
+  const {bg, logoWrapper, btnText, btnWrapper, btn} = header
+  const defaultProps = Header.defaultProps
+
+  return (
+    <Provider theme={theme}>
+      <Helmet
+        title={title}
+        meta={[
+          {name: 'description', content: 'Sample'},
+          {name: 'keywords', content: 'sample, something'},
+        ]}
+      />
+      <Header
+        bg={bg}
+        logoSrc={logoSrc}
+        logoWrapper={{...defaultProps.logoWrapper, ...logoWrapper}}
+        btnText={btnText}
+        btnWrapper={{...defaultProps.btnWrapper, ...btnWrapper}}
+        btn={{...defaultProps.btn, ...btn}}
+      />
+      <div>{children()}</div>
+    </Provider>
+  )
+}
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func,
@@ -31,27 +39,30 @@ TemplateWrapper.propTypes = {
 
 export default TemplateWrapper
 
-const theme = {
-  breakpoints: [32, 48, 64],
-  space: [0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60],
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72, 96],
-  weights: [400, 700],
-  colors: {
-    black: '#000',
-    white: '#fff',
-  },
-  radius: 4,
-  font: '-apple-system, BlinkMacSystemFont, sans-serif',
-  monospace: '"SF Mono", "Roboto Mono", Menlo, monospace',
-}
-
 export const query = graphql`
   query HeaderQuery {
     site {
       siteMetadata {
+        title
+        theme {
+          breakpoints
+          space
+          fontSizes
+          weights
+          colors {
+            primary
+            secondary
+          }
+          radius
+          font
+          monospace
+        }
         header {
           bg
           btnText
+          btn {
+            bg
+          }
         }
       }
     }

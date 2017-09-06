@@ -1,10 +1,15 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'skywings',
+
     header: {
       bg: '#0082C3',
       btnText: '예약하기',
+      btn: {
+        bg: 'primary',
+      },
     },
+
     hero: {
       backgroundImage: '',
       contentLoc: 'left',
@@ -27,6 +32,7 @@ module.exports = {
         descriptionPbs: [3],
       },
     },
+
     intro: {
       contentPx: [1, 3, 4, 4],
       title: {
@@ -47,6 +53,7 @@ module.exports = {
         descriptionPbs: [3],
       },
     },
+
     promotion: {
       title: {
         titleSizes: [8],
@@ -75,7 +82,22 @@ module.exports = {
         },
       ],
     },
+
+    theme: {
+      breakpoints: [32, 48, 64],
+      space: [0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60],
+      fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72, 96],
+      weights: [400, 700],
+      colors: {
+        primary: '#ea9a4c',
+        secondary: '#0082C3',
+      },
+      radius: 4,
+      font: '-apple-system, BlinkMacSystemFont, sans-serif',
+      monospace: '"SF Mono", "Roboto Mono", Menlo, monospace',
+    },
   },
+
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
