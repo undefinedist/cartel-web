@@ -5,11 +5,14 @@ import Intro from 'sicario/Intro'
 import Spacer from 'sicario/Spacer'
 import EmbedVideo from 'sicario/EmbedVideo'
 import Promotion from 'sicario/Promotion'
+import Gallery from 'sicario/Gallery'
 import heroBg from '../../static/hero-bg.jpg'
 import {pickBy, identity} from 'lodash'
+import {Carousel} from 'react-responsive-carousel'
+import {Image} from 'rebass'
 
 const IndexPage = ({data}) => {
-  const {hero, intro, promotion} = data.site.siteMetadata
+  const {hero, intro, promotion, gallery} = data.site.siteMetadata
 
   const heroDefault = Hero.defaultProps
   const introDefault = Intro.defaultProps
@@ -49,6 +52,13 @@ const IndexPage = ({data}) => {
           />
         ))}
       </div>
+      <Spacer />
+      <Spacer />
+      <Gallery images={gallery.images} />
+      <Spacer />
+      <Spacer />
+      <Spacer />
+      <Spacer />
     </div>
   )
 }
@@ -88,6 +98,9 @@ export const query = graphql`
             titleText
             descriptionText
           }
+        }
+        gallery {
+          images
         }
       }
     }

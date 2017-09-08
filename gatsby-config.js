@@ -54,6 +54,15 @@ module.exports = {
       ],
     },
 
+    gallery: {
+      images: [
+        'https://placekitten.com/g/400/300',
+        'https://placekitten.com/g/500/300',
+        'https://placekitten.com/g/700/700',
+        'https://placekitten.com/g/300/500',
+      ],
+    },
+
     theme: {
       breakpoints: [32, 48, 64],
       space: [0, 6, 12, 18, 24, 30, 36, 42, 48, 54, 60],
