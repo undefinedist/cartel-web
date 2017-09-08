@@ -8,71 +8,50 @@ import Promotion from 'sicario/Promotion'
 import heroBg from '../../static/hero-bg.jpg'
 import {pickBy, identity} from 'lodash'
 
-const IndexPage = ({data: {site: {siteMetadata: {hero, intro, promotion}}}}) => (
-  <div>
-    <Hero {...hero} backgroundImage={heroBg} />
-    <Spacer />
-    <div style={{maxWidth: '850px', margin: '0 auto'}}>
-      {console.log('ittle', intro.title.titleText)}
-      <Intro {...intro} />
+const IndexPage = ({data}) => {
+  const {hero, intro, promotion} = data.site.siteMetadata
+
+  const heroDefault = Hero.defaultProps
+  const introDefault = Intro.defaultProps
+
+  return (
+    <div>
+      <Hero
+        backgroundImage={heroBg}
+        wrapper={{...heroDefault.wrapper, ...hero.wrapper}}
+        titleText={hero.titleText || heroDefault.titleText}
+        title={{...heroDefault.title, ...hero.title}}
+        descriptionText={hero.descriptionText || heroDefault.descriptionText}
+        description={{...heroDefault.description, ...hero.description}}
+      />
       <Spacer />
-      <EmbedVideo />
-    </div>
-    <Spacer />
-    <Spacer />
-    <Spacer />
-    <div style={{maxWidth: '1200px', margin: '0 auto'}}>
-      {promotion.items.map((props, index) => (
-        <Promotion
-          {...props}
-          {...{...promotion.title, ...promotion.description}}
-          key={`promotion-${index}`}
-          index={index}
+      <div style={{maxWidth: '850px', margin: '0 auto'}}>
+        <Intro
+          wrapper={{...introDefault.wrapper, ...intro.wrapper}}
+          titleText={intro.titleText || introDefault.titleText}
+          title={{...introDefault.title, ...intro.title}}
+          description={{...introDefault.description, ...intro.description}}
+          descriptionText={intro.descriptionText || introDefault.descriptionText}
         />
-      ))}
+        <Spacer />
+        <EmbedVideo />
+      </div>
+      <Spacer />
+      <Spacer />
+      <Spacer />
+      <div style={{maxWidth: '1200px', margin: '0 auto'}}>
+        {promotion.items.map((props, index) => (
+          <Promotion
+            {...props}
+            {...{...promotion.title, ...promotion.description}}
+            key={`promotion-${index}`}
+            index={index}
+          />
+        ))}
+      </div>
     </div>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <h1>Hi people</h1>
-    <h1>Hi people</h1>
-    <h1>Hi people</h1>
-    <h1>Hi people</h1>
-    <h1>Hi people</h1>
-    <h1>Hi people</h1>
-    <h1>Hi people</h1>
-    <h1>Hi people</h1>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-    <Link to="/page-2/">Go to page 2</Link>
-  </div>
-)
+  )
+}
 
 export default IndexPage
 
@@ -81,44 +60,15 @@ export const query = graphql`
     site {
       siteMetadata {
         hero {
-          backgroundImage
-          contentLoc
-          contentPx
-          title {
-            titleText
-            titleSizes
-            titleColor
-            titleBold
-            titleMys
-            titlePbs
+          wrapper {
+            px
           }
-          description {
-            descriptionText
-            descriptionSizes
-            descriptionColor
-            descriptionBold
-            descriptionMys
-            descriptionPbs
-          }
+          titleText
+          descriptionText
         }
         intro {
-          contentPx
-          title {
-            titleText
-            titleSizes
-            titleColor
-            titleBold
-            titleMys
-            titlePbs
-          }
-          description {
-            descriptionText
-            descriptionSizes
-            descriptionColor
-            descriptionBold
-            descriptionMys
-            descriptionPbs
-          }
+          titleText
+          descriptionText
         }
         promotion {
           title {
