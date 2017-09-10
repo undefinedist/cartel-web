@@ -12,7 +12,7 @@
     "lodash": "^4.17.4",
     "react-responsive-carousel": "^3.1.25",
     "rebass": "^1.0.4",
-    "sicario": "^0.9.10",
+    "sicario": "^0.9.11",
     "styled-components": "^2.1.2"
   },
   "keywords": [

@@ -6,6 +6,7 @@ import Spacer from 'sicario/Spacer'
 import EmbedVideo from 'sicario/EmbedVideo'
 import Promotion from 'sicario/Promotion'
 import Gallery from 'sicario/Gallery'
+import BlogSummary from 'sicario/BlogSummary'
 import heroBg from '../../static/hero-bg.jpg'
 import {pickBy, identity} from 'lodash'
 import {Carousel} from 'react-responsive-carousel'
@@ -57,6 +58,8 @@ const IndexPage = ({data}) => {
       <Gallery images={gallery.images} />
       <Spacer />
       <Spacer />
+      <BlogSummary />
+
       <Spacer />
       <Spacer />
     </div>
